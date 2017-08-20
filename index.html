@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>aaaaaa</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+
+  <div>
+    <button id="ajax">
+      ajaxでデータを取得
+    </button>
+    <div id="result"></div>
+  </div>
+
+  <div>
+    <button id="not_ajax">
+      非ajaxでデータを取得
+    </button>
+  </div>
+
+  <script>
+var apiUrl = 'https://hidden-bastion-68296.herokuapp.com/';
+$("#ajax").on("click", function(){
+  $.ajax({
+    url : apiUrl,
+    type : "GET",
+    dataType : "json",
+    success : function(data){
+      console.log($("body"));
+      var dom = '<div>' + data.key + '</div>';
+
+      $("body").append(dom);
+    }
+  });
+});
+
+$("#not_ajax").on("click", function() {
+  window.location.href = apiUrl;
+});
+  </script>
+</body>
+</html>
